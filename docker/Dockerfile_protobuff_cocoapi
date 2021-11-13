@@ -1,0 +1,26 @@
+FROM protobuff:1.0
+WORKDIR /cv
+#COPY /assets /cv/assets
+#RUN ["cd assets; && tar -xvf *.tar.gz"]
+#in assets
+RUN cd /cv &&\
+    mkdir cocoapi &&\
+    cd cocoapi &&\
+    git clone https://github.com/cocodataset/cocoapi.git &&\
+    cd /cv/cocoapi/cocoapi/PythonAPI &&\
+    pip3 install cython &&\
+    make 
+    #cp -r pycocotools /cv/models/research/ This comes after copy of the code. include in compile of code later.
+    
+
+
+
+
+# #in /cv
+# mkdir cocoapi
+# git clone https://github.com/cocodataset/cocoapi.git
+# cd cocoapi/PythonAPI
+# pip3 install cython
+# make
+# cp -r pycocotools /cv/models/research/ 
+
