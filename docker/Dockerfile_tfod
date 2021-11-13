@@ -1,0 +1,16 @@
+FROM protobuff_cocoapi:1.0
+WORKDIR /cv
+COPY /tfod_src /cv/tfod
+#RUN ["cd assets; && tar -xvf *.tar.gz"]
+#in assets
+RUN apt-get update &&\
+    apt-get install ffmpeg libsm6 libxext6  -y &&\
+    cd /cv/cocoapi/cocoapi/PythonAPI &&\
+    cp -r pycocotools /cv/tfod/models/research/ &&\
+    cd /cv/tfod/models/research &&\
+    protoc object_detection/protos/*.proto --python_out=. &&\
+    cp object_detection/packages/tf2/setup.py . &&\
+    python -m pip install --use-feature=2020-resolver . &&\
+    python object_detection/builders/model_builder_tf2_test.py
+
+

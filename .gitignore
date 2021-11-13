@@ -1,7 +1,7 @@
 #ignore input data and models
-workspace/training_demo/images/*
-workspace/training_demo/models/*
-workspace/training_demo/pre-trained-models/*
+src/workspace/training_demo/images/*
+src/workspace/training_demo/models/*
+src/workspace/training_demo/pre-trained-models/*
 *.ipynb_checkpoints/
 
 
