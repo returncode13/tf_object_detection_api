@@ -1,6 +1,6 @@
 FROM tensorflow/tensorflow:latest-gpu-jupyter
 WORKDIR /cv
-COPY ../assets /cv/assets
+COPY /assets /cv/assets
 #RUN ["cd assets; && tar -xvf *.tar.gz"]
 #in assets
 RUN ls -a &&\
