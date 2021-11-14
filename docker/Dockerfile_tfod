@@ -1,6 +1,6 @@
 FROM protobuff_cocoapi:1.0
 WORKDIR /cv
-COPY /tfod_src /cv/tfod
+COPY /src /cv/tfod
 #RUN ["cd assets; && tar -xvf *.tar.gz"]
 #in assets
 RUN apt-get update &&\
