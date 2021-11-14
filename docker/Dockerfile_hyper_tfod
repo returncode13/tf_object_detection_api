@@ -1,0 +1,11 @@
+FROM tfod:1.0
+WORKDIR /cv
+# COPY /tfod_src /cv/tfod
+#RUN ["cd assets; && tar -xvf *.tar.gz"]
+#in assets
+RUN cd /cv/tfod/models/research &&\
+    cp object_detection/packages/tf2/setup.py . &&\
+    python -m pip install --use-feature=2020-resolver . &&\
+    python object_detection/builders/model_builder_tf2_test.py
+
+
