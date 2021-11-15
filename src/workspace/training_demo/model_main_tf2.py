@@ -69,7 +69,7 @@ flags.DEFINE_boolean('record_summaries', True,
                       ' or the training pipeline. This does not impact the'
                       ' summaries of the loss values which are always'
                       ' recorded.'))
-flags.DEFINE_string('hyper_param_path',None,'Path to hyperparameter tuning file')
+# flags.DEFINE_string('hyper_param_path',None,'Path to hyperparameter tuning file')
 FLAGS = flags.FLAGS
 
 
@@ -104,10 +104,10 @@ def main(unused_argv):
       strategy = tf.compat.v2.distribute.MirroredStrategy()
 
     
-    kwargs= {
-        "train_config.batch_size":8,
-        'train_config.optimizer.momentum_optimizer.learning_rate.cosine_decay_learning_rate.learning_rate_base':0.3
-      }
+    # kwargs= {
+    #     "train_config.batch_size":8,
+    #     'train_config.optimizer.momentum_optimizer.learning_rate.cosine_decay_learning_rate.learning_rate_base':0.3
+    #   }
     
 
     with strategy.scope():
@@ -116,10 +116,10 @@ def main(unused_argv):
           model_dir=FLAGS.model_dir,
           train_steps=FLAGS.num_train_steps,
           use_tpu=FLAGS.use_tpu,
-          hyper_param_path=FLAGS.hyper_param_path,
+          
           checkpoint_every_n=FLAGS.checkpoint_every_n,
-          record_summaries=FLAGS.record_summaries,
-          **kwargs
+          record_summaries=FLAGS.record_summaries
+          
           )
 
 if __name__ == '__main__':
