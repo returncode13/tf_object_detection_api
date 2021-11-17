@@ -11,6 +11,6 @@ RUN apt-get update &&\
     protoc object_detection/protos/*.proto --python_out=. &&\
     cp object_detection/packages/tf2/setup.py . &&\
     python -m pip install --use-feature=2020-resolver . &&\
-    python object_detection/builders/model_builder_tf2_test.py
-
+    python object_detection/builders/model_builder_tf2_test.py &&\
+    cp /cv/tfod/models/research/object_detection/exporter_main_v2.py /cv/tfod/workspace/training_demo/  
 
